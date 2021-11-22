@@ -1,0 +1,65 @@
+/* 
+palette:
+purple #661b8c
+red #eb275d
+orange #ffa600 */
+
+body {
+  font-family: Georgia, 'Nimbus Roman No9 L', 'Century Schoolbook L', serif;
+  font-size: 20px;
+  line-height: 1.45;
+  color: black;
+  background: white;
+}
+
+div.example {
+	border: 5px solid #661b8c;
+	border-radius: 7px
+}
+
+div.text {
+	margin: 0 auto;
+    max-width: 35em;
+    padding: 2em 1em 5em;
+    position: relative;
+    overflow-wrap: break-word;
+}
+div.title-box{
+	border: 5px solid gray;
+}
+p.author {
+	text-align: center;
+}
+
+h1.title {
+  width: 600px;
+  padding: 10px;
+  color: #eb275d;
+  
+  margin: auto;
+  text-align: center;
+}
+
+pre.text {
+	text-align: center;
+}
+
+div.center{
+	text-align: center;
+}
+h1.chapter{
+	
+    
+    color: #eb275d;
+    
+    /*text-align: center;*/
+}
+h4 {
+	width: 400px;
+    padding: 10px;
+	margin:auto;
+}
+p {
+	
+    /*border:5px solid gray;*/
+}
