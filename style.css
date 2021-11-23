@@ -12,6 +12,20 @@ body {
   background: white;
 }
 
+.picture_row {
+ 
+  width:100%;
+  text-align: center;
+
+  
+}
+
+.picture_row li{
+    float:left; 
+    display: inline;
+    width:30%;
+}
+
 div.example {
 	border: 5px solid #661b8c;
 	border-radius: 7px
@@ -26,6 +40,7 @@ div.text {
 }
 div.title-box{
 	border: 5px solid gray;
+	border-radius: 20px;
 }
 p.author {
 	text-align: center;

@@ -1,0 +1,69 @@
+<link rel=stylesheet href="style.css">
+<body class="w3-content">
+<div class="w3-container">
+
+<div class="text">
+Back to <a href="index.html">Contents</a>
+
+
+<h1 class="chapter">Alice, Bob, and Eve</h1>
+
+ 
+<p>Every introduction to cryptography sets the stage by introducing the characters Alice, Bob, and Eve.</p>
+
+<div class="picture_row">
+  <ul>
+    <li class="picture_row">
+      <h3>Alice</h3>
+      <img src="alice.png" alt="alice" style="width:15%">
+      
+    </li>
+
+    <li class="picture_row">
+      <h3>Eve</h3>
+      <img src="eve.png" alt="Forest" style="width:15%">
+      
+    </li>
+
+    <li class="picture_row">
+      <h3>Bob</h3>
+      <img src="bob.png" alt="Mountains" style="width:15%">
+    
+    </li>
+  </ul>
+</div>
+<br style="clear:both;" />
+
+<p>Alice and Bob want to send confidential messages to each other but Eve is able to intercept any message sent between the two. Alice and Bob will use various cryptographic methods in an attempt to keep their messages confidential. Eve will think of more and more elaborate ways to attack. We will study cryptography from each of their points of view.</p>
+
+
+<p>Let's say Alice wants to send the following message to Bob: 
+</p>
+	<pre class="text">The password is written in my yellow notebook</pre>
+   This is our <b>plain-text</b>. It's readable by anyone who happens to have an English dictionary. Our goal is to use the plain-text and some type of <b>key</b> to generate <b>cipher-text</b>. Alice sends Bob the cipher-text so Eve sees it as well. We want the cipher-text to be difficult enough to understand so that by the time a Eve figures out what it says, the message will no longer be important to keep secret. For example, if the password that Alice refers to in her message is her online banking password then we need to make it very hard for Eve to figure out the plain-text from just the cipher-text. If it is just Alice's Netflix password then we don't have to be as careful.
+
+   This process of generating cipher-text from plain text is called <b>encryption</b>.
+
+   <div class="center">(plain-text, key) &#8594; cipher-text</div>
+</p>
+<p>
+   At the same time as we want to protect our message from spies, we want our intended recipient to be able to convert the cipher-text back to plain-text. We want them to be able to accomplish this much faster and easier than it would be for the spy. The process of recovering the plain-text from cipher-text is called decryption. We might hope that our intended recipient could use the same key we used for encryption to decrypt. This is a feature of <b>secret key cryprography</b>, also known as <b>symeteric key cryptography</b>.
+   <div class="center">plain-text &#8592; (cipher-text, key)</div>
+
+	</p>
+	<p>
+		Secret key cryptographic methods have been in use for thousands of years. Next we will describe one supposedly used by Julius Caesar for military communications. 
+	</p>
+
+
+
+
+    <hr>
+	
+Back to <a href="index.html">Contents</a>
+</div>
+
+</div>
+
+
+</body>
