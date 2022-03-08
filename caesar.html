@@ -1,0 +1,209 @@
+<link rel=stylesheet href="style.css">
+<body class="w3-content">
+<div class="w3-container">
+
+<div class="text">
+<div class="heading center">
+  <span>Cryptography with Python</span>
+</div>
+Back to <a href="index.html">Contents</a>
+
+
+<h1 class="chapter">Caesar's Cipher</h1>
+<p>
+<a title="Museum of antiquities
+, Public domain, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:Retrato_de_Julio_C%C3%A9sar_(26724093101)_(cropped).jpg"><img width="256" alt="Retrato de Julio César (26724093101) (cropped)" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Retrato_de_Julio_C%C3%A9sar_%2826724093101%29_%28cropped%29.jpg/256px-Retrato_de_Julio_C%C3%A9sar_%2826724093101%29_%28cropped%29.jpg" align="right"></a>
+Julius Caesar was born in 100 BC and died in 44 BC. Shakespeare told the story of his assassination by a group of Roman Senators when Caesar was Emperor of Rome. His closest friends were among the assassins. Before he was emperor of Rome, Caesar was a celebrated general who greatly expanded territory and influence. In particular, he was successful in capturing Gaul (Present day France, Belgium, and part of Germany) in 50 BC with about 30,000 troops at his command. </p>
+
+<p>An army the size of Caesar's required sophisticated communication networks. Orders must be transmitted quickly, sometimes over long distances, and kept secret from enemies. The task of keeping messages secret was made easier by the fact that both Romans and their enemies were mostly illiterate. If a message meant for a Roman officer fell in to the hands of the enemy it would take a lot of time and effort to find someone who could read the message and then more time to figure out how to exploit this information to obtain battle advantage.</p>
+
+<p>Nevertheless, Caesar is said to have used a simple cipher, known as Caesar's Cipher, to disguise his military communications. To generate cipher text, each letter of the message was substituted by the letter three letters up in alphabetical order. For example the letter 'a' would be substituted by 'd'. The letter 'm' by 'p'. If we get to the end of the alphabet we start back at 'a'. So the letter 'y' in a message would be substituted by 'b'.</p>
+
+Plain-text: <pre class="text">attack the right flank</pre>
+Cipher-text: <pre class="text">dwwdfn wkh uljkw iodqn</pre>
+
+When a Roman officer receives the cipher-text, he only needs to shift each letter back three letters to recover the plain-text. But the same is true for a enemy. Anyone, provided they could read, would only need to work for a minute or two to figure out the plain-text. 
+
+
+<h4>Generalizing Caesar's Cipher</h4>
+
+Caesar's Cipher shifts each plain-text letter by three places in the alphabet to generate a cipher-text letter. But there is nothing special about the number three. We could shift letters by five or thirteen places. This shift value is our key. We would also like to get rid of the spaces in the plain-text so that they don't show up in the cipher-text. Here are some examples.
+
+<pre class="text">plain-text = attacktherightflank</pre>
+
+<table class="element-center">
+  <tr>
+    <th style="text-align:left">Key</th>
+    <th style="text-align:center">Cipher-text</th>   
+  </tr>
+  <tr>
+    <td style="text-align:center">3</td>
+    <td><pre>dwwdfnwkhuljkwiodqn</pre></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">4</td>
+    <td><pre>exxegoxlivmklxjpero</pre></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">5</td>
+    <td><pre>fyyfhpymjwnlmykqfsp</pre></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">&#8942;</td>
+    <td style="text-align: center">&#8942;</td>
+  </tr>
+  <tr>
+    <td style="text-align:center">24</td>
+    <td><pre>yrryairfcpgefrdjyli</pre></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">25</td>
+    <td><pre>zsszbjsgdqhfgsekzmj</pre></td>
+  </tr>
+  <tr>
+    <td style="text-align:center">26</td>
+    <td><pre>attacktherightflank</pre></td>
+  </tr>
+</table>
+
+<p>Since there are 26 letters in the alphabet, a key of 26 will bring us right back to our original plain-text. This means there are effectively only 25 possible keys for this generalized Caesar's Cipher.</p> 
+
+<p>This is our first example of <b>secret key</b> cryptography. Let's see how it works with our characters, Alice, Bob, and Eve.</p>
+
+
+<p>Alice and Bob want to send each other confidential text messages but Eve is able to see each message. First, Alice and Bob meet one night in-person to agree on a secret key of 17. They will keep this key secret from Eve. </p>
+
+
+<p>Later that day Alice wants to text Bob the message "hibob". She uses the secret key of 17 to encrypt the plain text into cipher-text. She sends the cipher-text to Bob. Bob, since he knows the key is 17, can decrypt the message by shifting each letter of the cipher-text back 17 places in the alphabet.</p>
+
+<p>Eve is able to see everything sent between Alice and Bob so she sees the cipher-text. But Eve doesn't know the key so she has a more difficult time figuring out the cipher text than Bob does.</p>
+
+
+<div class="picture_row">
+  <ul>
+    <li class="picture_row">
+      <h3>Alice</h3>
+      <img src="alice.png" alt="alice" style="width:15%">
+      <p>key = 17</p>
+      <p>plain-text = "hibob"</p>
+      <p>cipher-text = "yzsfs"</p>
+      
+    </li>
+
+    <li class="picture_row">
+      <h3>Eve</h3>
+      <img src="eve.svg" alt="eve" style="width:15%">
+      <p>key = ?</p>
+      <p>plain-text = ? </p>
+      <p>cipher-text = "yzsfs"</p>
+    </li>
+
+    <li class="picture_row">
+      <h3>Bob</h3>
+      <img src="bob.png" alt="bob" style="width:15%">
+      <p>key = 17</p>
+      <p>plain-text = "hibob" </p>
+      <p>cipher-text = "yzsfs"</p>
+    
+    </li>
+  </ul>
+</div>
+<br style="clear:both;" />
+<p></p>
+
+<p>To find the key and the plain-text, Eve could simply try some of the 25 possible keys until she finds the one that works. That is, she tries to decrypt with different keys until she produces a message she thinks Alice might have wanted to send to Bob. This is called <b>attacking the keys</b>. Actually, attacking the keys does not always work. Let's say Eve tries key = 16. She shifts each letter of the cipher-text back 16 to get "ghana". Since this is a word in English, the name of a country, she might think this is the message Alice intended to send to Bob.</p> 
+
+
+<h4>Caesar's Cipher in Python</h4>
+
+Caesar's Cipher encrypts one letter at a time by, 
+<ol>
+    <li>finding its index in the alphabet</li>
+    <li>making a new index by adding the key</li>
+    <li>find the letter in the alphabet corresponding to the new index.</li>
+</ol>
+Firstly Step 1 requires us to choose an alphabet. For now we can just use lower case letters 'a' through 'z'. We can store our alphabet as a string.
+<pre class="text"><code class="python">alphabet = 'abcdefghijklmnopqrstuvwxyz'</code></pre>
+To find the index of a lower case letter we use Python's string method .find(). Read the documentation for this method and all other python features here <a href="https://docs.python.org/3/">https://docs.python.org/3/</a>. For step 2, we add the key to the index. If we pass the letter 'z' we want to wrap back around to 'a'. To accomplish this we will use the modulus operator, %. 
+<pre class="text"><code class="python">a%b</code></pre>
+is the remainder when a is divided by b. For example, 29%26 = 3. Here are the three steps in code.
+<iframe src="https://trinket.io/embed/python3/da884f496e?start=result" width="100%" height="270" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+We have to loop over each letter in the plain-text and append new_letter to the cipher-text. 
+
+
+<!--- Side note -->
+<div class="sidenote">
+<div class="label">
+<h3>Side Note</h3>
+</div>
+<h4>Looping over lists the python way</h4>
+<p>Here are two ways to loop over strings or lists in python. They both accomplish the same thing, but the second way is considered much better, more "pythonic". Many python beginners overuse the first type of loop.</p>
+<iframe src="https://trinket.io/embed/python3/2bf2b2c33d?toggleCode=true" width="100%" height="250" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+</div>
+<!--- Side note -->
+
+<p>We can use the + operator to append new letters to the end of our cipher-text.</p>
+
+
+ 
+<div style="width:670px;overflow:auto">
+<pre style="font-size:15px">
+Dec  Char                           Dec  Char     Dec  Char     Dec  Char
+---------                           ---------     ---------     ----------
+  0  NUL (null)                      32  SPACE     64  @         96  `
+  1  SOH (start of heading)          33  !         65  A         97  a
+  2  STX (start of text)             34  "         66  B         98  b
+  3  ETX (end of text)               35  #         67  C         99  c
+  4  EOT (end of transmission)       36  $         68  D        100  d
+  5  ENQ (enquiry)                   37  %         69  E        101  e
+  6  ACK (acknowledge)               38  &         70  F        102  f
+  7  BEL (bell)                      39  '         71  G        103  g
+  8  BS  (backspace)                 40  (         72  H        104  h
+  9  TAB (horizontal tab)            41  )         73  I        105  i
+ 10  LF  (NL line feed, new line)    42  *         74  J        106  j
+ 11  VT  (vertical tab)              43  +         75  K        107  k
+ 12  FF  (NP form feed, new page)    44  ,         76  L        108  l
+ 13  CR  (carriage return)           45  -         77  M        109  m
+ 14  SO  (shift out)                 46  .         78  N        110  n
+ 15  SI  (shift in)                  47  /         79  O        111  o
+ 16  DLE (data link escape)          48  0         80  P        112  p
+ 17  DC1 (device control 1)          49  1         81  Q        113  q
+ 18  DC2 (device control 2)          50  2         82  R        114  r
+ 19  DC3 (device control 3)          51  3         83  S        115  s
+ 20  DC4 (device control 4)          52  4         84  T        116  t
+ 21  NAK (negative acknowledge)      53  5         85  U        117  u
+ 22  SYN (synchronous idle)          54  6         86  V        118  v
+ 23  ETB (end of trans. block)       55  7         87  W        119  w
+ 24  CAN (cancel)                    56  8         88  X        120  x
+ 25  EM  (end of medium)             57  9         89  Y        121  y
+ 26  SUB (substitute)                58  :         90  Z        122  z
+ 27  ESC (escape)                    59  ;         91  [        123  {
+ 28  FS  (file separator)            60  <         92  \        124  |
+ 29  GS  (group separator)           61  =         93  ]        125  }
+ 30  RS  (record separator)          62  >         94  ^        126  ~
+ 31  US  (unit separator)            63  ?         95  _        127  DEL
+</pre>
+</div>
+<h4>Exercises</h4>
+<ol>
+  <li>The following cipher-text was generated using the generalized Caesar's Cipher. 
+    <pre class="text">aopzpzzwhyah</pre>
+    Attack the keys to find the plain-text and the key.
+  </li>
+  
+  <li>Instead of just lower case letters, you use all letters with ASCII values from 33 to 126 (including both end points) to make a Generalized Caesar's Cipher. How many distinct keys does this cipher have?</li>
+
+  <li>Read the official Python documentation for the string method .join(). </li>
+
+
+  
+</ol>
+    <hr>
+	
+Back to <a href="index.html">Contents</a>
+</div>
+
+</div>
+
+
+</body>

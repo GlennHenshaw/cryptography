@@ -1,7 +1,7 @@
 /* 
 palette:
 purple #661b8c
-red #eb275d
+red #e27d60
 orange #ffa600 */
 
 body {
@@ -10,6 +10,11 @@ body {
   line-height: 1.45;
   color: black;
   background: white;
+}
+
+.element-center {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .picture_row {
@@ -46,10 +51,30 @@ p.author {
 	text-align: center;
 }
 
+div.heading{
+  color:gray;
+}
+
+h3.part {
+  color: gray;
+
+}
+div.sidenote{
+  border: 5px solid steelBlue;
+  border-radius: 25px;
+  padding: 10px;
+ 
+}
+div.sidenote div.label {
+  background-color: steelBlue;
+  color: white;
+  text-align: center;
+}
+
 h1.title {
   width: 600px;
   padding: 10px;
-  color: #eb275d;
+  color: #e27d60;
   
   margin: auto;
   text-align: center;
@@ -62,19 +87,8 @@ pre.text {
 div.center{
 	text-align: center;
 }
+
 h1.chapter{
-	
-    
-    color: #eb275d;
-    
+    color: #e27d60; 
     /*text-align: center;*/
-}
-h4 {
-	width: 400px;
-    padding: 10px;
-	margin:auto;
-}
-p {
-	
-    /*border:5px solid gray;*/
 }

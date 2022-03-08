@@ -3,20 +3,79 @@
 <div class="w3-container">
 
 <div class="text">
+	<div class="heading center">
+  <span>Cryptography with Python</span>
+</div>
 Back to <a href="index.html">Contents</a>
-
 
 <h1 class="chapter">Introduction</h1>
 
-<p>The goal of Cryptography is to disguise communications so that only the intended recipients can understand them. There are ancient scripts like Mayan and ancient Egyptian whose meanings were lost in history. This is not cryptography since these languages were made to foster public communication. Cryptography specifically endeavors to make communication private.</p>     
+<p>One goal of Cryptography is to disguise communications so that it's hard for unintended recipients to understand them. But cryptography not only endeavors to make communication private. We will see how cryptography can assure the integrity of communications. </p>     
 
 <p>Cryptography is everywhere. Every bank transfer, email, and text message is transferred through multiple computer systems. Encryption is used to keep this information private. But there is another side to this story. Hackers, law enforcement, and governments also want access to data. The story of cryptography runs parallel with the development of the Internet and exponential growth of computation power during the last 60 years.</p>  
 
 <p>We start by discussing secret key (symmetric key) cryptography. Then we dive into public key cryptography--the technology that makes the Internet as we know it possible. Along the way we will learn some math and some computer science concepts. We will also think about some interesting philosophical and social issues. </p>
 
-<p>From time to time you will see python cells like the one below. You can explore the code provided in these cells and you can run your own python code. Press the play button to run the code.</p>
+<p>One thing that makes this course different from other introductory cryptography courses is that we will make use of the Python programming language. We will not use python to implement full-fledged cryptographic systems from scratch. Rather, we will use python to explore many cryptographic and mathematical concepts. From time to time you will see python cells like the one below. You can view/run the code provided in these cells, edit, and run your own python code. Press the play button to run the code. Click the share button to generate a share link for your code.</p>
 
-<iframe src="https://trinket.io/embed/python3/978ecf93b7" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+<iframe src="https://trinket.io/embed/python3/978ecf93b7" width="100%" height="200" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+<p>Let's set the stage for our study of cryptography. Every introduction to cryptography sets the stage by introducing the characters Alice, Bob, and Eve.</p>
+
+<div class="picture_row">
+  <ul>
+    <li class="picture_row">
+      <h3>Alice</h3>
+      <img src="alice.png" alt="alice" style="width:15%">
+      
+    </li>
+
+    <li class="picture_row">
+      <h3>Eve</h3>
+      <img src="eve.svg" alt="eve" style="width:15%">
+      
+    </li>
+
+    <li class="picture_row">
+      <h3>Bob</h3>
+      <img src="bob.png" alt="bob" style="width:15%">
+    
+    </li>
+  </ul>
+</div>
+<br style="clear:both;" />
+
+<p>Alice and Bob want to send confidential messages to each other but Eve is able to intercept any message sent between the two. Alice and Bob will use various cryptographic methods in an attempt to keep their messages confidential. Eve will think of more and more elaborate ways to attack. We will study cryptography from each of their points of view.</p>
+
+
+<p>Let's say Alice wants to send the following message to Bob: 
+</p>
+	<pre class="text">The password is written in my yellow notebook</pre>
+   This is our <b>plain-text</b>. It's readable by anyone who happens to have an English dictionary. Our goal is to use the plain-text and some type of <b>key</b> to generate <b>cipher-text</b>. Alice sends Bob the cipher-text so Eve sees it as well. We want the cipher-text to be difficult enough to understand so that by the time a Eve figures out what it says, the message will no longer be important to keep secret. For example, if the password that Alice refers to in her message is her online banking password then we need to make it very hard for Eve to figure out the plain-text from just the cipher-text. If it is just Alice's Netflix password then we don't have to be as careful.
+
+   This process of generating cipher-text from plain text is called <b>encryption</b>.
+
+   <div class="center">(plain-text, key) &#8594; cipher-text</div>
+</p>
+<p>
+   At the same time as we want to protect our message from spies, we want our intended recipient to be able to convert the cipher-text back to plain-text. We want them to be able to accomplish this much faster and easier than it would be for the spy. The process of recovering the plain-text from cipher-text is called decryption. We might hope that our intended recipient could use the same key we used for encryption to decrypt. This is a feature of <b>secret key cryprography</b>, also known as <b>symeteric key cryptography</b>.
+   <div class="center">plain-text &#8592; (cipher-text, key)</div>
+
+	</p>
+	<p>
+   For thousands of years military leaders and government agencies have used Secret key cryptographic methods. But only in the last 50 years, since the invention of the computer and the coming of the information age, has cryptography become part of everyday communication and commerce. We will see that secret key cryptography alone is not practical to meet the needs of humanity.  
+	</p>
+
+	<p>
+   The invention of public key cryptography is a remarkable story that features some of the most beautiful mathematics ever created. Perhaps surprisingly, we can get a good sense of what's happening by just extending our college algebra level skills. Of course, if you just want a working knowledge cryptographic methods, you can skip most of the math.
+	</p>
+   <p>
+   This course explores some interesting details but ultimately it is a broad overview of a topic that has endless depth. My hope is that this course inspires students to continue studying cryptography and its many fascinating sub-topics. 
+   </p>
+
+
+
+
 
     <hr>
 	
