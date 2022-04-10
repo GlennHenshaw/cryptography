@@ -1,0 +1,96 @@
+<link rel=stylesheet href="style.css">
+<body class="w3-content">
+<div class="w3-container">
+
+<div class="text">
+<div class="heading center">
+  <span>Cryptography with Python</span>
+</div>
+Back to <a href="index.html">Contents</a>
+
+
+<h1 class="chapter">Bits and Bytes</h1>
+
+<p>A bit (1 or 0) is the smallest unit of information in digital computing a byte is a group of 8 bits. Every processing task can be broken down to combinations three operations on bits (and, or, not). The operations <em>and</em> and <em>or</em> each take two bits as input and return a single bit. The operation NOT takes one bit as input and returns one bit.</p>
+
+AND:
+<ul>
+	<li>0 and 0 = 0</li>
+	<li>0 and 1 = 0</li>
+	<li>1 and 0 = 0</li>
+	<li>1 and 1 = 1</li>
+</ul>
+
+OR:
+<ul>
+	<li>0 or 0 = 0</li>
+	<li>0 or 1 = 1</li>
+	<li>1 or 0 = 1</li>
+	<li>1 or 1 = 1</li>
+</ul>
+
+NOT:
+<ul>
+	<li>Not 0 = 1</li>
+	<li>Not 1 = 0</li>
+</ul>
+
+<p>We can combine these operations algebraically to describe more complicated logic. The variables A, B, and C stand for bits (1 or 0).</p>
+
+$$(A and not B) or (not A and B)$$
+
+<p>Let's evaluate this expression for all possible values of $A and B$</p>
+
+<ul>
+	<li>For $A = 0, B = 0$ we have $(0 and not 0) or (not 0 and 0) = 0$</li>
+	<li>For $A = 0, B = 1$ we have $(0 and not 1) or (not 0 and 1) = 1$</li>
+	<li>For $A = 1, B = 0$ we have $(1 and not 0) or (not 1 and 0) = 1$</li>
+	<li>For $A = 1, B = 1$ we have $(1 and not 1) or (not 1 and 1) = 0$</li>
+</ul>
+
+<p>The expression $(A and not B) or (not A and B)$ describes a logical operation called <em>xor</em> (exclusive or). We will see that <em>xor</em> is very important in modern cryptography. The first example of how <em>xor</em> can be used in cryptography is the one-time-pad discussed later in the class.</p>
+
+<p>Strings of bits can stand for numbers represented in base 2 (binary numbers). Binary numbers two possible digits (0 or 1) and have place values in powers of 2 instead of digits 0-9 and the usual powers of 10. Every number (in this class we will only consider integers) can be written uniquely as a binary number. We can also represent numbers in other bases like 16, hexadecimal.</p>
+
+Decimal numbers
+<ul>
+	<li>Example: $2655 = 2*10^3 + 6*10^2 + 5*10+ 5*10^0$</li>
+	<li>possible digits: 0,1,2,3,4,5,6,7,8,9</li>
+</ul>
+Hexadecimal numbers
+<ul>
+	<li>Example: $A5E = 10*16^2 + 5*16 + 15*16^0 = 2655$ </li>
+	<li>possible hexadecimal digits: 0,1,2,3,4,5,6,7,8,9</li>
+</ul>
+Binary numbers
+<ul>
+	<li>Example: $101001011111 = 1*2^11 + 0*2^10 + 1*2^9+\cdots = 2655$</li>
+	<li>possible binary digits: 0,1</li>
+</ul>
+
+<p>We will do many more examples during class. We will also learn how to convert between these three bases.</p>
+
+<p>From now on the cryptographic algorithms we learn about (like AES) will be defined based on how they operate on chunks of bits. So our plain-text will be represented as bit strings instead of usual text characters. Sometimes cryptographic keys are represented in hexadecimal.</p>
+
+There are some python commands that are helpful for converting characters to binary representations of ASCII code. 
+
+<ul>
+	<li>ord() for converting a character to its decimal ASCII code.</li>
+	<li>bin() for converting a decimal number to its corresponding binary representation.</li>
+	<li>int() This constructor accepts a variable called base that indicates the base of the input. int() will always output a number in base 10. For example int('11',base=2) = 3.</li>
+
+</ul>
+
+<iframe src="https://trinket.io/embed/python3/f1847195d1" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+
+
+    <hr>
+	
+Back to <a href="index.html">Contents</a>
+</div>
+
+</div>
+
+
+</body>
