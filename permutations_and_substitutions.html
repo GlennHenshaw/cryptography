@@ -1,0 +1,82 @@
+<link rel=stylesheet href="style.css">
+<body class="w3-content">
+<div class="w3-container">
+
+<div class="text">
+<div class="heading center">
+  <span>Cryptography with Python</span>
+</div>
+Back to <a href="index.html">Contents</a>
+
+
+<h1 class="chapter">Permutations and substitutions</h1>
+
+<p>So far we learned two secret key cryptographic methods: Caesar Cipher and Vigenere Cipher. Really, Caesar Cipher is just a special case of Vigenere Cipher. Each of these use substitutions. Based on a given key, and the position of the letters in plain text, we substitute them with different letters. Another way to generate cipher text is to re-arrange the letters in the plain text. Modern encryption uses both substitution and permutations (transposition).
+</p>
+
+Let's list all permutations for the word "CAT".
+<ul>
+<li>CAT</li>
+<li>CTA</li>
+<li>ACT</li>
+<li>ATC</li>
+<li>TCA</li>
+<li>TAC</li>
+</ul>
+There are 6.
+
+<p>
+  The number of permutations for a word grows quickly as the number of letters increases. For example, a 6 letter word, like 'radius' has 720 possible permutations. 6 ways to choose the first letter. 5 ways to choose the second. 4 ways to choose the third letter. 3 ways to choose the forth letter. 2 ways to choose the fifth letter. 1 ways to choose the sixth letter. 6*5*4*3*2*1 = 720. In general, if there are n distinct letters then there are n! distinct permutations.
+
+  $$ n! = n*(n-1)*(n-2)*...*2*1 $$
+
+  0! = 1.
+</p>
+
+
+<p>
+
+  If some characters are identical, like the word "mississippi", some of the 11! permutations will be identical. We should count identical permutations only once.
+
+For an n-letter word. The first letter is repeated $r_{1}$ times. The second letter is repeated $r_{2}$ times. And so on. For an n-letter word. The first letter is repeated r 
+1
+​
+  times. The second letter is repeated r 
+2
+​
+  times. And so on.
+\text{Then the number of distinct permutations} = \frac{n!}{r_{1}! \cdot r_{2}! \cdots r_{n}!}Then the number of distinct permutations= 
+r 
+1
+​
+ !⋅r 
+2
+​
+ !⋯r 
+n
+​
+ !
+n!
+​
+ 
+The symbol ! is prounounced "factorial".
+
+
+</p>
+
+
+
+
+
+
+
+
+    <hr>
+	
+Back to <a href="index.html">Contents</a>
+</div>
+
+</div>
+
+
+</body>
